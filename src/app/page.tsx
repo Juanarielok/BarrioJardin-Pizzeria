@@ -2,7 +2,7 @@ import Listacomida from './comidas';
 import Image from 'next/image' 
 import './App.css';
 
-function App() {
+function Page() {
   return (
     <div className="App">
     
@@ -41,4 +41,4 @@ function App() {
   );
 }
 
-export default App;
+export default Page;
