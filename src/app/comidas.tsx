@@ -5,8 +5,8 @@ import './App.css';
 import { useRouter } from 'next/navigation' 
 import router from 'next/router';
 import Link from 'next/link';
+import { escribirLocalStorage } from './localStorageService';
 
-  
 
 const Listacomida = () => {
   var preciosign = "PRECIO";
@@ -34,41 +34,30 @@ const Listacomida = () => {
     },
   ];
 
-  const [ordenarVisible, setOrdenarVisible] = useState(
-    comidas.map(() => true)
-  );
 
   const [inputValues, setInputValues] = useState(
-    comidas.map(() => 1)
+    comidas.map(() => 0)
   );
 
-  const [carritoVisible, setCarritoVisible] = useState(false);
+
 
   const handleOrdenarClick = (index: number) => {
-    setOrdenarVisible((prev: any) => {
+    setInputValues((prev: any) => {
       const updatedVisible = [...prev];
-      updatedVisible[index] = false;
+      updatedVisible[index] = 1;
       return updatedVisible;
     });
 
     
-    setCarritoVisible(true);
-
-    console.log(`${index + 1}`);
-  };
+  }
 
   const handleCancelarClick = (index: number) => {
-    setOrdenarVisible((prev: any) => {
+    setInputValues((prev: any) => {
       const updatedVisible = [...prev];
-      updatedVisible[index] = true;
+      updatedVisible[index] = 0;
       return updatedVisible;
     });
-
-    
-    setCarritoVisible(false);
-
-    console.log(` ${index + 1}`);
-  };
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const value = parseInt(event.target.value);
@@ -77,7 +66,7 @@ const Listacomida = () => {
       updatedValues[index] = isNaN(value) ? 1 : Math.max(1, value);
       return updatedValues;
     });
-    console.log(`Input actualizado para la comida ${index + 1}: ${value}`);
+    
   };
 
   const handleIncrement = (index: number) => {
@@ -96,10 +85,31 @@ const Listacomida = () => {
     });
   };
 
-  const handleIrAlCarritoClick = () => {
-    
-    console.log('Ir al carrito');
-  };
+  
+
+  function condicioncarrito () {
+    for (let i = 0; i < inputValues.length; i++) {
+      if (inputValues[i] > 0 ) {
+
+return true;
+      } 
+
+
+    }
+    return false;
+  }
+
+
+
+ escribirLocalStorage(inputValues,"pepito");
+
+
+
+
+
+
+
+
 
   return (
     <div className="lista-comidas">
@@ -118,7 +128,7 @@ const Listacomida = () => {
             <h4 className="comida-titulo-abajo">{comida.tituloAbajo}</h4>
             <p>{comida.precio}</p>
 
-            {ordenarVisible[index] ? (
+            {inputValues[index]==0 ? (
               <div>
                 <button className="boti" onClick={() => handleOrdenarClick(index)}>
                   ORDENAR
@@ -159,17 +169,19 @@ const Listacomida = () => {
       ))}
 
     
-<Link className="enlace" href="/facturar">
-      <button  
-        className="ir-al-carrito"
-        style={{  display: carritoVisible ? 'block' : 'none' }}
-        
-      >
-        IR AL CARRITO
-        ➥
-        
-      </button>
+
+
+{condicioncarrito () ? (
+<Link className="enlace" href="/facturar"> 
+      <button className="ir-al-carrito"> 
+        IR AL CARRITO 
+        ➥ 
+      </button> 
       </Link>
+) : (
+  <></>
+)
+}
     </div>
   );
 };
