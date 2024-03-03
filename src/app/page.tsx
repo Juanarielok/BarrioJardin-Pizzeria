@@ -1,3 +1,5 @@
+"use client"
+
 import Listacomida from './comidas';
 import Image from 'next/image' 
 import './App.css';
