@@ -29,7 +29,7 @@ function butacacomida () {
 return comidas.map((comida, index)  => (
 
  
-   <h4 className='pop'>{comida.titulo }<h4> {facturita[index]}</h4></h4>
+   <h4 className='pop' key={index}>{comida.titulo }<> {facturita[index]}</></h4>
     )
     
     
