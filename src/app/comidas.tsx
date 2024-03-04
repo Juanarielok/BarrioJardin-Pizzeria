@@ -6,35 +6,11 @@ import { useRouter } from 'next/navigation'
 import router from 'next/router';
 import Link from 'next/link';
 import { escribirLocalStorage } from './localStorageService';
+import { comidas } from './facturar/carta';
 
 
 const Listacomida = () => {
-  var preciosign = "PRECIO";
-  const comidas = [
-    {
-      titulo: 'MUZZARELLA CLASICA GRANDE',
-      subtitulo: 'Pizza clasica de muzzarella',
-      imagen: './muzza1.png',
-      tituloAbajo: preciosign,
-      precio: '$7.000,00',
-    },
-    {
-      titulo: 'EMPANADA DE CARNE',
-      subtitulo: 'Empanadas de carne cortadas a cuchillo',
-      imagen: './emp1.png',
-      tituloAbajo: preciosign,
-      precio: '$970,00',
-    },
-    {
-      titulo: 'LOMITO CLASICO',
-      subtitulo: 'Sanguche de lomito, con jamon, queso y pan pebete',
-      imagen: './lomo1.png',
-      tituloAbajo: preciosign,
-      precio: '$6.000,00',
-    },
-  ];
-
-
+ 
   const [inputValues, setInputValues] = useState(
     comidas.map(() => 0)
   );
@@ -102,7 +78,6 @@ return true;
 
 
  escribirLocalStorage(inputValues,"pepito");
-
 
 
 

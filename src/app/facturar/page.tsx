@@ -3,10 +3,13 @@
 import './App.css';
 import { leerLocalStorage } from '../localStorageService';
 import { useEffect, useState } from 'react';
+import { comidas } from './carta';
 
 function Page2() {
 
   const [facturita, setFacturita] = useState<number[]>([]);
+  const [facturita1, setFacturita1] = useState<[]>([]);
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -14,11 +17,38 @@ function Page2() {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setFacturita1(leerLocalStorage('pepiton'));
+    }
+  }, []);
+
+
+
+function butacacomida () {
+return
+  comidas.map((comida, index)  => (
+
+ 
+   <h4>{comida.titulo }<h4> {facturita[index]}</h4></h4>
+    )
+    
+    
+    );
+}
+
+
+
+
+
+
+
+
   return (
     <div className="App">
 
       <div>{facturita}</div>
-
+      <div>{butacacomida()}</div>
       <div className='titulito1'> BARRIO JARDIN
 
 
