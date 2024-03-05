@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: overlay;
+      background: linear-gradient(
+        to right,
+        violet 0%,
+        indigo 8%,
+        blue 16%,
+        cyan 24%,
+        green 32%,
+        yellow 40%,
+        orange 48%,
+        red 56%,
+        violet 64%,
+        indigo 72%,
+        blue 80%,
+        magenta 88%,
+        pink 100%,
+        #ffcc00 110%,
+        #66ff66 120%,
+        #ffffff 130%,
+        #ff6699 140%,
+        #9966ff 150%
+      );
+      background-size: 200% 100%;
+      animation: rainbowAnimation 2s linear infinite;
+      z-index: 9999;
+    }
+
+    @keyframes rainbowAnimation {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 200% 100%;
+      }
+    }
+
+    #overlay2 {
+  position: fixed;
+  top: 2px;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  animation: moveRight 4s linear infinite; /* 4s total duration (1s right + 1s left + 2s right) */
+  mix-blend-mode: color-burn;
+  z-index: 100000;
+}
+
+@keyframes moveRight {
+  0%, 100% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(1200px); /* Move right */
+  }
+  50% {
+    transform: translateX(0%); /* Move left */
+  }
+  75% {
+    transform: translateX(1200px); /* Move right again */
+  }
+}
+
+#overlay3 {
+  position: fixed;
+  top: 2px;
+  left: 0;
+  width: 50px;
+  height: 40px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  animation: moveLeft 4s linear infinite; /* Updated animation name */
+  mix-blend-mode: color-burn;
+  z-index: 210000;
+}
+
+@keyframes moveLeft {
+  0%, 100% {
+    transform: translateX(1200px);
+  }
+  25% {
+    transform: translateX(0%); /* Move left (inverted) */
+  }
+  50% {
+    transform: translateX(1200px); /* Move right (inverted) */
+  }
+  75% {
+    transform: translateX(0%); /* Move left again (inverted) */
+  }
+}
+
+
+
+
+
+
+    @font-face {
+      font-family: 'LED';
+      src: url('DOTI3.ttf') format('truetype');
+    }
+
+    #textContainer {
+      width: 1200px;
+      height: 40px;
+      top: 3px;
+      background-color: black;
+      font-size: 19px;
+      color: rgb(255, 255, 244);
+      font-family: 'LED';
+      
+      letter-spacing: 3px;
+      display: inline-block;
+      font-weight: 100;
+      
+      text-shadow: 0 0 1px rgba(255, 255, 255, 1),
+      0 0 8px rgba(255, 255, 255, 1)
+      ;
+      position: relative;
+      overflow: hidden; /* Oculta el texto que se desplaza fuera del contenedor */
+    }
+
+    .text-slide {
+      animation: slideRight 4s linear infinite;
+    }
+
+    @keyframes slideRight {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .fade {
+      animation: fade 1s 0.1;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade {
+      0%,
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="overlay"></div>
+  <div id="textContainer" class="text-slide"></div>
+  <div id="overlay2"></div>
+  <div id="overlay3"></div>
+  <script>
+    const words = ["GRACIAS POR SU COMPRA", " BARRIO JARDIN PIZZERIA ", " LLAMANOS AL WHATSAPP"];
+    let currentWordIndex = 0;
+    let currentLetterIndex = 0;
+    let blinkCount = 0;
+
+    function writeText() {
+      const textContainer = document.getElementById('textContainer');
+      textContainer.innerHTML = words[currentWordIndex].slice(0, currentLetterIndex);
+
+      if (currentLetterIndex < words[currentWordIndex].length) {
+        currentLetterIndex++;
+        setTimeout(writeText, 18);
+      } else {
+        setTimeout(() => {
+          textContainer.classList.add('fade');
+          setTimeout(() => {
+            textContainer.classList.remove('fade');
+
+            if (blinkCount < 1) {
+              setTimeout(() => {
+                blinkCount++;
+                writeText();
+              }, 1000);
+            } else {
+              blinkCount = 0;
+              currentWordIndex = (currentWordIndex + 1) % words.length;
+              currentLetterIndex = 0;
+              textContainer.innerHTML = '';
+              textContainer.classList.remove('text-slide'); // Remueve la clase para reiniciar la animación
+              setTimeout(() => {
+                textContainer.classList.add('text-slide'); // Añade la clase para iniciar la animación
+                writeText();
+              }, 1000);
+            }
+          }, 1000);
+        }, 1000);
+      }
+    }
+
+    writeText();
+  </script>
+</body>
+
+</html>

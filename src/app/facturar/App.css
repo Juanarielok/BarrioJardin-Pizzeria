@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    
   }
   
   .App-logo {
@@ -12,12 +13,221 @@
       animation: App-logo-spin infinite 20s linear;
     }
   }
+  body{   background-color: #CE1616}
+  
+  
+  body::after {
+    content: "";
+    position: fixed;
+    top: 1.5px;
+    left: 1.5px;
+    right: 1.5px;
+    bottom: 1.5px;
+    border: 1px solid #ffffff; 
+    background-color: #CE1616;
+    pointer-events: none; 
+    box-sizing: border-box;
+    z-index: -100; 
+   
+   
+   
+  
+  }
+  
+ 
  
   .titulito1{
-
+    
     font-size: 22px;
   } 
 
-  .factura00{ background-color: white;}
+  .titulitopago{
+    font-family: 'simsun';
+    font-size: 22px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    outline: 1px solid white;
+    display: inline-block;
+    padding: 1px 3px;
+  } 
 
-  .factura01{background-color: white;}
+  
+
+
+  .pop,
+  .pop1 {
+    display: flex;
+    font-size: 10px;
+    text-shadow: none;
+    height: auto;
+    font-family: 'simsun';
+    text-align: left;
+    padding: 3px;
+    outline: 2px;
+    transform: scaleY(1.3);
+    color: rgb(255, 217, 0);
+    margin-left: 20px;
+    margin-right: 40px;
+  }
+  
+  .pop1 { 
+    margin-top: -2.4px;
+    margin-left: auto;
+  }
+  
+  .pop2{
+    
+    margin-left: auto;
+    
+  }
+
+  .barra-divisora3{
+    margin-left: -160px;
+    height: 11px;
+      width: 300px;
+      margin-bottom: -30px;
+    }
+    
+
+    .titulito1{
+      font-size: 25px;
+      margin-top: 20px;
+      margin-left: -5px;
+      font-family: 'Pizz';
+      color: #533D00;
+      text-shadow: 0.5px 0.5px 0 #ffffff, -0.5px -0.5px 0 #ffffff, 0.5px -0.5px 0 #ffffff, -0.5px 0.5px 0 #ffffff;
+      
+      }
+
+      @font-face {
+        font-family: 'Pizz';
+        src: url('pizz2.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+      
+
+      @font-face {
+        font-family: 'SimSun';
+        src: url('./SIMSUN.ttf') format('truetype');
+      
+        font-weight: normal;
+        font-style: normal;
+      }
+      
+      .pop5 {
+        display: flex;
+        font-size: 12px;
+        text-shadow: none;
+        height: auto;
+        font-family: 'simsun';
+       margin-right: 40px;
+        padding: 3px;
+        outline: 2px;
+        transform: scaleY(1.3);
+        color: rgb(255, 217, 0);
+        justify-content: flex-end;
+
+      }
+
+      .barra-divisora22{
+        height: 11px;
+        width: 300px;
+
+
+      }
+
+      .barra-divisora23{
+        height: 11px;
+        width: 300px;
+
+
+margin-bottom: -10px;
+      }
+
+    .detalles{
+margin-bottom: -20px;
+margin-left: 20px;
+    }
+
+    .containerDD {
+      overflow: hidden;
+      border: none;
+      width: 330px;
+      top:202px;
+    
+      height: 30px;
+    
+    
+    }
+
+
+    .containerD {
+      overflow: hidden;
+      border: none;
+    
+    }
+    
+
+    .container33{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 200px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 120px;
+    }
+
+    .a61 { 
+      padding: 10px;
+      width: 130px;
+      height: 60px;
+      background-color: #aa2467;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'simsun';
+    }
+
+    .a62 {
+      padding: 10px;
+      width: 130px;
+      height: 60px;
+      background-color: #eaeff1;
+      color: #000000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'simsun';
+    }
+
+    .a63 {
+      font-family: 'simsun';
+      padding: 10px;
+      width: 130px;
+      height: 60px;
+      background-color: rgb(207, 185, 136);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .a64 {
+      padding: 10px;
+      width: 130px;
+      height: 60px;
+      background-color: #71b995;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'simsun';
+    }

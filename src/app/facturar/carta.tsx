@@ -6,22 +6,20 @@ import { escribirLocalStorage } from "../localStorageService";
      subtitulo: 'Pizza clasica de muzzarella',
      imagen: './muzza1.png',
      tituloAbajo: preciosign,
-     precio: '$7.000,00',
+     precio: 7000,
    },
    {
      titulo: 'EMPANADA DE CARNE',
      subtitulo: 'Empanadas de carne cortadas a cuchillo',
      imagen: './emp1.png',
      tituloAbajo: preciosign,
-     precio: '$970,00',
+     precio: 970,
    },
    {
      titulo: 'LOMITO CLASICO',
      subtitulo: 'Sanguche de lomito, con jamon, queso y pan pebete',
      imagen: './lomo1.png',
      tituloAbajo: preciosign,
-     precio: '$6.000,00',
+     precio:  6000,
    },
  ];
-
- escribirLocalStorage(comidas[0].titulo,"pepiton");
