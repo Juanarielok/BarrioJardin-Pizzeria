@@ -6,6 +6,7 @@ export function escribirLocalStorage<T> (valor : T, clave : string) {
  }
 
  export function leerLocalStorage<T>(clave: string) : T {
-    const valorEnTexto = localStorage.getItem(clave) || '';
-    return JSON.parse(valorEnTexto);
-  }
+  const valorenTexto = localStorage.getItem(clave) || '';
+  return JSON.parse(valorenTexto)
+ }
+  
