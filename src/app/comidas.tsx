@@ -1,21 +1,14 @@
-
 "use client";
-import { useState } from 'react';
-import './App.css';
-import { useRouter } from 'next/navigation' 
-import router from 'next/router';
-import Link from 'next/link';
-import { escribirLocalStorage } from './localStorageService';
-import { comidas } from './facturar/carta';
+import React, { useState } from "react";
+import "./App.css";
+import { useRouter } from "next/navigation";
+import router from "next/router";
+import Link from "next/link";
+import { escribirLocalStorage } from "./localStorageService";
+import { comidas } from "./facturar/carta";
 
-
-const Listacomida = () => {
- 
-  const [inputValues, setInputValues] = useState(
-    comidas.map(() => 0)
-  );
-
-
+export default function Listacomida(): React.ReactNode {
+  const [inputValues, setInputValues] = useState(comidas.map(() => 0));
 
   const handleOrdenarClick = (index: number) => {
     setInputValues((prev: any) => {
@@ -23,9 +16,7 @@ const Listacomida = () => {
       updatedVisible[index] = 1;
       return updatedVisible;
     });
-
-    
-  }
+  };
 
   const handleCancelarClick = (index: number) => {
     setInputValues((prev: any) => {
@@ -33,16 +24,18 @@ const Listacomida = () => {
       updatedVisible[index] = 0;
       return updatedVisible;
     });
-  }
+  };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     const value = parseInt(event.target.value);
     setInputValues((prev: any) => {
       const updatedValues = [...prev];
       updatedValues[index] = isNaN(value) ? 1 : Math.max(1, value);
       return updatedValues;
     });
-    
   };
 
   const handleIncrement = (index: number) => {
@@ -61,30 +54,16 @@ const Listacomida = () => {
     });
   };
 
-  
-
-  function condicioncarrito () {
+  function condicioncarrito() {
     for (let i = 0; i < inputValues.length; i++) {
-      if (inputValues[i] > 0 ) {
-
-return true;
-      } 
-
-
+      if (inputValues[i] > 0) {
+        return true;
+      }
     }
     return false;
   }
 
-
-
- escribirLocalStorage(inputValues,"pepito");
-
-
-
-
-
-
-
+  escribirLocalStorage(inputValues, "pepito");
 
   return (
     <div className="lista-comidas">
@@ -103,30 +82,42 @@ return true;
             <h4 className="comida-titulo-abajo">{comida.tituloAbajo}</h4>
             <p>{comida.precio}</p>
 
-            {inputValues[index]==0 ? (
+            {inputValues[index] == 0 ? (
               <div>
-                <button className="boti" onClick={() => handleOrdenarClick(index)}>
+                <button
+                  className="boti"
+                  onClick={() => handleOrdenarClick(index)}
+                >
                   ORDENAR
                 </button>
               </div>
             ) : (
               <div>
-                <button className="cancelar" onClick={() => handleCancelarClick(index)}>
+                <button
+                  className="cancelar"
+                  onClick={() => handleCancelarClick(index)}
+                >
                   X
                 </button>
 
-                <button className="decrement" onClick={() => handleDecrement(index)}>
+                <button
+                  className="decrement"
+                  onClick={() => handleDecrement(index)}
+                >
                   -
                 </button>
 
                 <input
                   type="number"
-                  min="1"
+                  min="0"
                   value={inputValues[index]}
                   onChange={(e) => handleInputChange(e, index)}
                 />
 
-                <button className="increment" onClick={() => handleIncrement(index)}>
+                <button
+                  className="increment"
+                  onClick={() => handleIncrement(index)}
+                >
                   +
                 </button>
               </div>
@@ -143,22 +134,13 @@ return true;
         </div>
       ))}
 
-    
-
-
-{condicioncarrito () ? (
-<Link className="enlace" href="/facturar"> 
-      <button className="ir-al-carrito"> 
-        IR AL CARRITO 
-        ➥ 
-      </button> 
-      </Link>
-) : (
-  <></>
-)
-}
+      {condicioncarrito() ? (
+        <Link className="enlace" href="/facturar">
+          <button className="ir-al-carrito">IR AL CARRITO ➥</button>
+        </Link>
+      ) : (
+        <></>
+      )}
     </div>
   );
-};
-
-export default Listacomida;
+}
