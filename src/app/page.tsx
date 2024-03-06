@@ -2,28 +2,32 @@
 
 import Listacomida from "./comidas";
 import Image from "next/image";
-import "./App.css";
+import "./App.scss";
 
 function Page() {
   return (
-    <div className="App">
+    <div className="App carta">
       <div className="titulito">
-        {" "}
-        BARRIO JARDIN
-        <Image
-          className="logazo2"
-          src="/pizzitas.png"
-          width={120}
-          height={120}
-          alt="Picture of the author"
-        />
-        <div className="subtitulo"> PIZZA</div>
-        <div className="subtitulo22"> &</div>
-        <div className="subtitulo23"> Lomitos</div>
+        <p>
+          BARRIO JARDIN
+        </p>
+        <div className="titulo-y-imagen">
+          <Image
+            className="logazo2"
+            src="/pizzitas.png"
+            width={120}
+            height={120}
+            alt="Picture of the author"
+          />
+          <div className="titulo">
+            <div className="subtitulo"> PIZZA</div>
+            <div className="subtitulo22"> &</div>
+            <div className="subtitulo23"> Lomitos</div>
+          </div>
+        </div>
       </div>
       <div className="titulocomidas">
-        {" "}
-        COMIDAS
+        <p>COMIDAS</p>
         <img
           className="divisor04"
           src={"/divider.png"}

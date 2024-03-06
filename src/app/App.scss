@@ -1,0 +1,333 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+body {
+  background-color: #CE1616
+}
+
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 1.5px;
+  left: 1.5px;
+  right: 1.5px;
+  bottom: 1.5px;
+  border: 1px solid #ffffff;
+  background-color: #CE1616;
+  pointer-events: none;
+  box-sizing: border-box;
+  z-index: -100;
+
+
+
+
+}
+
+.subtitulo22 {
+
+  margin-top: -120px;
+  margin-bottom: -14px;
+}
+
+.subtitulo23 {
+  font-family: 'must';
+  margin-bottom: 30px;
+  color: rgb(168, 82, 1);
+}
+
+
+.barra-divisora {
+  height: 11px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.divisor04 {
+  height: 11px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.titulito {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-left: -5px;
+  font-family: 'Pizz';
+  color: #533D00;
+  text-shadow: 0.5px 0.5px 0 #ffffff, -0.5px -0.5px 0 #ffffff, 0.5px -0.5px 0 #ffffff, -0.5px 0.5px 0 #ffffff;
+
+}
+
+.enlace {
+  height: 30px;
+  width: 30px;
+  margin-top: -30px;
+  color: transparent;
+}
+
+.subtitulo {
+  color: white;
+  text-shadow: 0.5px 0.5px 0 #000000, -0.5px -0.5px 0 #000000, 0.5px -0.5px 0 #000000, -0.5px 0.5px 0 #000000;
+}
+
+.titulocomidas {
+  margin: 0 auto;
+  font-family: 'pizz';
+  color: rgb(221, 29, 29);
+  text-shadow: 0.5px 0.5px 0 #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px 0.5px 0 #fff;
+}
+
+.comida-titulo {
+  font-family: 'SimSun';
+  color: rgb(255, 255, 255);
+  transform: scaleY(1.3);
+  font-weight: 500;
+
+  font-size: 16px;
+
+  display: inline-block;
+  padding: 2px 5px;
+  margin-left: 120px;
+  margin-top: 10px;
+}
+
+.comida-container {
+  margin-bottom: 50px;
+  height: 100px;
+}
+
+.comida-subtitulo {
+  color: rgb(255, 255, 255);
+  font-family: 'SimSun';
+  margin-top: 0px;
+  margin-left: 120px;
+  font-size: 10px;
+
+}
+
+.comida-imagen {
+  margin-top: -30px;
+  margin-left: -200px;
+}
+
+.subtitulo {
+
+  margin-bottom: 100px;
+}
+
+.boti {
+  background-color: transparent;
+  color: rgb(255, 217, 0);
+  font-family: 'SimSun';
+  font-weight: bolder;
+  margin-left: 200px;
+  font-size: 18px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.comida-titulo-abajo {
+  color: rgb(255, 217, 0);
+  font-family: 'SimSun';
+  font-size: 15px;
+  margin-bottom: 0px;
+  margin-top: -100px;
+}
+
+.comida-precio {
+  color: rgb(255, 217, 0);
+  width: 100px;
+  font-family: 'SimSun';
+  margin-left: 190px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: 'SimSun';
+  src: url('./SIMSUN.ttf') format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Pizz1';
+  src: url('pizz.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pizz';
+  src: url('pizz2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'must';
+  src: url('mustardo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+input {
+
+  width: 30px;
+  padding: 5px;
+  font-size: 20px;
+  text-shadow: 0.5px 0.5px 0 #DDA009, -0.5px -0.5px 0 #DDA009, 0.5px -0.5px 0 #DDA009, -0.5px 0.5px 0 #DDA009,
+    0.9px 0.9px 0 #000000, -0.9px -0.9px 0 #000000, 0.9px -0.9px 0 #000000, -0.9px 0.9px 0 #000000;
+  margin-top: -7px;
+  color: white;
+  background-color: #ffffff00;
+  border: none;
+  text-align: center;
+}
+
+.increment {
+  background-color: #DDA009;
+  color: white;
+  font-size: 18px;
+
+  width: 30px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  outline: 1px solid #523412;
+  height: 20px;
+  cursor: pointer;
+  margin-right: -60px;
+
+}
+
+.decrement {
+  background-color: #DDA009;
+  color: white;
+  font-size: 18px;
+
+  width: 30px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  outline: 1px solid #523412;
+  height: 20px;
+  cursor: pointer;
+
+}
+
+
+.cancelar {
+  background-color: rgb(167, 0, 0);
+  color: white;
+  font-size: 18px;
+  margin-right: 27px;
+  width: auto;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  outline: 1px solid white;
+  height: 20px;
+  cursor: pointer;
+  margin-left: -120px;
+}
+
+
+.ir-al-carrito {
+  position: fixed;
+  top: 222px;
+  right: -10px;
+  font-size: 17px;
+  font-family: 'Simsun';
+  font-weight: bolder;
+  color: rgb(226, 28, 61);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  transform: translateX(-20%);
+  z-index: 900;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+
+  border: none;
+}
+
+.lista-comidas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.App.carta {
+  .titulo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .titulo-y-imagen {
+    position: relative;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .logazo2 {
+    position: absolute;
+    right: -20px;
+  }
+}

@@ -1,40 +1,42 @@
 "use client";
 
-import "./App.css";
+import "./App.scss";
 import calcularTotalPedido from "./utilidades/calcularTotalPedido";
 import { leerLocalStorage } from "../localStorageService";
 import { useEffect, useState } from "react";
 import { comidas } from "./carta";
+import PedidoConfirmado from "./pedido-confirmado";
 
 function Page2() {
   const [facturita, setFacturita] = useState<number[]>([]);
   const [botonClicado, setBotonClicado] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
-  const [almacenarMode, setAlmacenarMode] = useState(false);
   const [direccion, setDireccion] = useState('');
   const [numero, setNumero] = useState('');
   const [labelText, setLabelText] = useState('');
 
+  const [pedidoConfirmado, setPedidoConfirmado] = useState<boolean>(false);
+
   const handleAgregarEditarClick = () => {
     if (editMode) {
-     
+
       setLabelText(`${direccion}, ${numero}`);
       setDireccion('');
       setNumero('');
     }
 
-   
+
     setEditMode(!editMode);
   };
-  
-  
-    const handleClick1 = (nombreBoton: string) => {
-      setBotonClicado(nombreBoton);
-    }
+
+
+  const handleClick1 = (nombreBoton: string) => {
+    setBotonClicado(nombreBoton);
+  }
 
 
 
-  
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -49,19 +51,21 @@ function Page2() {
       .map((comida, index) => ({ ...comida, index }))
       .filter(({ index }) => facturita[index] != 0)
       .map(({ titulo, precio, index }) => (
-        <h4 className="pop" key={index}>
-          {titulo}
+        <tr>
+          <td className="pop" key={index}>
+            {titulo}
+          </td>
 
-          <h4 className="pop2" key={index}>
+          <td className="pop2 pop" key={index}>
             {" "}
             x {facturita[index]}{" "}
-          </h4>
-         
-          <h4 className="pop1" key={index}>
+          </td>
+
+          <td className="pop1" key={index}>
             {" "}
-            $ {facturita[index]*precio}{" "}
-          </h4>
-        </h4>
+            $ {facturita[index] * precio}{" "}
+          </td>
+        </tr>
       ));
   }
 
@@ -69,13 +73,21 @@ function Page2() {
     throw new Error("Function not implemented.");
   }
 
+  const confirmarPedido = () => {
+    setPedidoConfirmado(true);
+  };
+
   return (
-    <div className="App">
+    <div className="App facturar">
       <div className="titulito1">
         {" "}
-        BARRIO JARDIN
+        <p>BARRIO JARDIN</p>
         <img src="divider.png" className="barra-divisora22" />
-        <div className="detalles">{butacacomida()}</div>
+        <div className="detalles">
+          <table className="tabla-detalles">
+            {butacacomida()}
+          </table>
+        </div>
         <img src="divider1.png" className="barra-divisora23" />
         <h4 className="pop5">TOTAL: $ {calcularTotalPedido(facturita)}</h4>
       </div>
@@ -91,64 +103,74 @@ function Page2() {
         ></iframe>
       </div>
 
-      <div className="titulitopago"> CONFIRMA EL PEDIDO </div>
+      {!pedidoConfirmado && (<section className="datos-pedido-sin-confirmar">
+        <div className="titulitopago"> CONFIRMA EL PEDIDO </div>
 
-      <div className="titulitometodo1"> Metodo de pago </div>
+        <div className="titulitometodo1"> Metodo de pago </div>
 
-      <div className="container33">
-      {botonClicado ? (
-        <label>{botonClicado}</label>
-      ) : (
-        <>
-          <button className="a61" onClick={() => handleClick1('EFECTIVO')}>
-            <img src="" className="efectivo" /> EFECTIVO (contra entrega)
+        <div className="container33">
+          {botonClicado ? (
+            <label>{botonClicado}</label>
+          ) : (
+            <>
+              <button className="a61" onClick={() => handleClick1('EFECTIVO')}>
+                <img src="" className="efectivo" /> EFECTIVO (contra entrega)
+              </button>
+
+              <button className="a62" onClick={() => handleClick1('DEBITO')}>
+                <img src="" className="debito" /> DEBITO (tarjeta de débito)
+              </button>
+
+              <button className="a63" onClick={() => handleClick1('MERCADO PAGO')}>
+                <img src="" className="mp" /> MERCADO PAGO
+              </button>
+
+              <button className="a64" onClick={() => handleClick1('UALA')}>
+                <img src="" className="uala" /> UALA
+              </button>
+            </>
+          )}
+
+        </div>
+
+        <div className="titulitometodo1"> Direccion de envio </div>
+        <div>
+          {editMode ? (
+            <div>
+              <input
+                type="text"
+                placeholder="Dirección"
+                value={direccion}
+                onChange={(e) => setDireccion(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Número"
+                value={numero}
+                onChange={(e) => setNumero(e.target.value)}
+              />
+            </div>
+          ) : null}
+
+          <button onClick={handleAgregarEditarClick}>
+            {editMode && labelText ? 'Aceptar' : 'Modificar direccion'}
           </button>
 
-          <button className="a62" onClick={() => handleClick1('DEBITO')}>
-            <img src="" className="debito" /> DEBITO (tarjeta de débito)
-          </button>
+          {!editMode ? <label>{labelText}</label> : null}
+        </div>
 
-          <button className="a63" onClick={() => handleClick1('MERCADO PAGO')}>
-            <img src="" className="mp" /> MERCADO PAGO
-          </button>
-
-          <button className="a64" onClick={() => handleClick1('UALA')}>
-            <img src="" className="uala" /> UALA
-          </button>
-        </>
+        <button onClick={confirmarPedido}>
+          CONFIRMAR ENVIO
+        </button>
+      </section>)}
+      {pedidoConfirmado && (
+        <section className="info-pedido-confirmado">
+          <PedidoConfirmado direccion={direccion} 
+                            numero={numero}
+                            detalles={labelText}></PedidoConfirmado>
+        </section>
       )}
 
-      </div>
-      
-      <div className="titulitometodo1"> Direccion de envio </div>
-      <div>
-      {editMode ? (
-        <div>
-       <input
-            type="text"
-            placeholder="Dirección"
-            value={direccion}
-            onChange={(e) => setDireccion(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Número"
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
-          />
-        </div>
-      ) : null}
-
-      <button onClick={handleAgregarEditarClick}>
-        {editMode && labelText ? 'Aceptar' : 'Modificar direccion'}
-      </button>
-
-      {!editMode ? <label>{labelText}</label> : null}
-    </div>
-
-    <button >
-       CONFIRMAR ENVIO
-      </button>
     </div>
   );
 }

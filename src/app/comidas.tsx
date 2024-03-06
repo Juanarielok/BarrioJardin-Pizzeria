@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import { useRouter } from "next/navigation";
 import router from "next/router";
 import Link from "next/link";
@@ -68,70 +68,73 @@ export default function Listacomida(): React.ReactNode {
   return (
     <div className="lista-comidas">
       {comidas.map((comida, index) => (
-        <div key={index} className="comida-container">
-          <h2 className="comida-titulo">{comida.titulo}</h2>
-          <h3 className="comida-subtitulo">{comida.subtitulo}</h3>
-          <img
-            className="comida-imagen"
-            src={comida.imagen}
-            alt={`Imagen ${index + 1}`}
-            width="120"
-            height="120"
-          />
-          <div className="comida-precio">
-            <h4 className="comida-titulo-abajo">{comida.tituloAbajo}</h4>
-            <p>{comida.precio}</p>
+        <>
+          <div key={index} className="comida-container">
+            <h2 className="comida-titulo">{comida.titulo}</h2>
+            <h3 className="comida-subtitulo">{comida.subtitulo}</h3>
+            <img
+              className="comida-imagen"
+              src={comida.imagen}
+              alt={`Imagen ${index + 1}`}
+              width="120"
+              height="120"
+            />
+            <div className="comida-precio">
+              <h4 className="comida-titulo-abajo">{comida.tituloAbajo}</h4>
+              <p>{comida.precio}</p>
 
-            {inputValues[index] == 0 ? (
-              <div>
-                <button
-                  className="boti"
-                  onClick={() => handleOrdenarClick(index)}
-                >
-                  ORDENAR
-                </button>
-              </div>
-            ) : (
-              <div>
-                <button
-                  className="cancelar"
-                  onClick={() => handleCancelarClick(index)}
-                >
-                  X
-                </button>
+              {inputValues[index] == 0 ? (
+                <div>
+                  <button
+                    className="boti"
+                    onClick={() => handleOrdenarClick(index)}
+                  >
+                    ORDENAR
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    className="cancelar"
+                    onClick={() => handleCancelarClick(index)}
+                  >
+                    X
+                  </button>
 
-                <button
-                  className="decrement"
-                  onClick={() => handleDecrement(index)}
-                >
-                  -
-                </button>
+                  <button
+                    className="decrement"
+                    onClick={() => handleDecrement(index)}
+                  >
+                    -
+                  </button>
 
-                <input
-                  type="number"
-                  min="0"
-                  value={inputValues[index]}
-                  onChange={(e) => handleInputChange(e, index)}
-                />
+                  <input
+                    type="number"
+                    min="0"
+                    value={inputValues[index]}
+                    onChange={(e) => handleInputChange(e, index)}
+                  />
 
-                <button
-                  className="increment"
-                  onClick={() => handleIncrement(index)}
-                >
-                  +
-                </button>
-              </div>
-            )}
+                  <button
+                    className="increment"
+                    onClick={() => handleIncrement(index)}
+                  >
+                    +
+                  </button>
+                </div>
+              )}
 
-            {index < comidas.length - 1 && (
-              <img
-                src="divider.png"
-                alt={`Barra divisora ${index + 1}`}
-                className="barra-divisora"
-              />
-            )}
+
+            </div>
           </div>
-        </div>
+          {index < comidas.length - 1 && (
+            <img
+              src="divider.png"
+              alt={`Barra divisora ${index + 1}`}
+              className="barra-divisora"
+            />
+          )}
+        </>
       ))}
 
       {condicioncarrito() ? (

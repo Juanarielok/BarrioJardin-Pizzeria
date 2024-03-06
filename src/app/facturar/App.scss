@@ -1,7 +1,7 @@
 .App {
     text-align: center;
     
-  }
+}
   
   .App-logo {
     height: 40vmin;
@@ -57,7 +57,6 @@
 
   .pop,
   .pop1 {
-    display: flex;
     font-size: 10px;
     text-shadow: none;
     height: auto;
@@ -69,6 +68,13 @@
     color: rgb(255, 217, 0);
     margin-left: 20px;
     margin-right: 40px;
+
+    text-align: left;
+    padding-right: 20px;
+
+    &.pop1 {
+      text-align: right;
+    }
   }
   
   .pop1 { 
@@ -129,6 +135,10 @@
         color: rgb(255, 217, 0);
         justify-content: flex-end;
 
+        text-align: right;
+        width: 100%;
+        padding-right: 20px;
+
       }
 
       .barra-divisora22{
@@ -172,12 +182,15 @@ margin-left: 20px;
 
     .container33{
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      width: 200px;
     align-items: center;
-    margin-left: auto;
-    margin-right: 120px;
+
+    width: 100%;
+    margin: 0 auto;
+    grid-template-columns: auto auto;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
     }
 
     .a61 { 
@@ -235,5 +248,23 @@ margin-left: 20px;
 
     .titulitometodo1{
 
+      color: white;
+    }
+
+    .App.facturar {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .tabla-detalles {
+      width: 100%;
+    }
+  
+    .info-pedido-confirmado {
+      font-family: "simsun";
+      font-size: 22px;
       color: white;
     }
