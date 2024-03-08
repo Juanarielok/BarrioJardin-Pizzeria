@@ -13,9 +13,33 @@ function Page2() {
   const [editMode, setEditMode] = useState(false);
   const [direccion, setDireccion] = useState('');
   const [numero, setNumero] = useState('');
+  const [numeroa, setNumeroa] = useState('');
   const [labelText, setLabelText] = useState('');
+  
+
+  
 
   const [pedidoConfirmado, setPedidoConfirmado] = useState<boolean>(false);
+
+
+  const generarNumeroAleatorio = () => {
+    const nuevoNumero = "00" + (Math.floor(Math.random() * 900000) + 100000);
+
+    const letrasAleatorias = String.fromCharCode(65 + Math.floor(Math.random() * 26)) +
+                       String.fromCharCode(65 + Math.floor(Math.random() * 26)) +
+                       String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    const nuevoNumeroConLetras = letrasAleatorias + nuevoNumero.toString() ;
+    setNumeroa(nuevoNumeroConLetras);
+  };
+  
+
+  useEffect(() => {
+    if (pedidoConfirmado) {
+      generarNumeroAleatorio();
+    }
+  }, [pedidoConfirmado]);
+
+
 
   const handleAgregarEditarClick = () => {
     if (editMode) {
@@ -165,9 +189,16 @@ function Page2() {
       </section>)}
       {pedidoConfirmado && (
         <section className="info-pedido-confirmado">
-          <PedidoConfirmado direccion={direccion} 
-                            numero={numero}
-                            detalles={labelText}></PedidoConfirmado>
+
+          <PedidoConfirmado  direccion={direccion + numero}
+                            numero={ numeroa}
+                            detalles={labelText}
+                            metodo={botonClicado ?? ''}
+                              total= { calcularTotalPedido(facturita)}>
+
+
+
+                            </PedidoConfirmado>
         </section>
       )}
 

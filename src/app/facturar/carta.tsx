@@ -23,3 +23,6 @@ import { escribirLocalStorage } from "../localStorageService";
      precio:  6000,
    },
  ];
+
+
+ 
