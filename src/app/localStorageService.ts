@@ -6,10 +6,10 @@ export function escribirLocalStorage<T> (valor : T, clave : string) {
  }
 
  export function leerLocalStorage<T>(clave: string) : T {
-  let valorenTexto = '';
+  let valorenTexto = '{}';
 
   if (typeof window !== 'undefined') {
-    valorenTexto = localStorage.getItem(clave) || '';
+    valorenTexto = localStorage.getItem(clave) || valorenTexto;
   }
 
   return JSON.parse(valorenTexto)
