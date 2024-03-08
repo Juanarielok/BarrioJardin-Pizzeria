@@ -15,7 +15,15 @@ function Page2() {
   const [numero, setNumero] = useState('');
   const [numeroa, setNumeroa] = useState('');
   const [labelText, setLabelText] = useState('');
-  
+  const handleIngresar = () => {
+    // Aquí puedes manejar la lógica de ingreso para el botón DEBITO
+    console.log('Ingresar datos para DEBITO');
+  };
+
+  const handleIrAMercadoPago = () => {
+    // Aquí puedes manejar la redirección a Mercado Pago
+    window.location.href = 'URL_DE_TU_PAGINA_DE_MERCADO_PAGO';
+  }
 
   
 
@@ -152,6 +160,35 @@ function Page2() {
               </button>
             </>
           )}
+
+
+{botonClicado === 'DEBITO' && (
+        <div>
+          {/* Agrega los 4 inputs para DEBITO */}
+          <input type="text" placeholder="Input 1" />
+          <input type="text" placeholder="Input 2" />
+          <input type="text" placeholder="Input 3" />
+          <input type="text" placeholder="Input 4" />
+          
+          {/* Botón para ingresar los datos */}
+          <button onClick={handleIngresar}>Ingresar</button>
+        </div>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
 
