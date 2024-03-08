@@ -75,19 +75,17 @@ function Page2() {
       .map((comida, index) => ({ ...comida, index }))
       .filter(({ index }) => facturita[index] != 0)
       .map(({ titulo, precio, index }) => (
-        <tr>
-          <td className="pop" key={index}>
+        <tr key={index}>
+          <td className="pop">
             {titulo}
           </td>
 
-          <td className="pop2 pop" key={index}>
-            {" "}
-            x {facturita[index]}{" "}
+          <td className="pop2 pop">
+            x {facturita[index]}
           </td>
 
-          <td className="pop1" key={index}>
-            {" "}
-            $ {facturita[index] * precio}{" "}
+          <td className="pop1">
+            $ {facturita[index] * precio}
           </td>
         </tr>
       ));
